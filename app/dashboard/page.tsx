@@ -12,6 +12,9 @@ async function getData(userId: string) {
     orderBy: {
       createdAt: 'desc',
     },
+    include: {
+      author: true, // 👈 include related author
+    },
   })
   return data
 }
@@ -35,7 +38,7 @@ export default async function DashboardRoute() {
       <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {data.map((item) => (
           <div key={item.id}>
-            <BlogPostCard data={item} key={item.id}/>
+            <BlogPostCard data={item} />
           </div>
         ))}
       </div>

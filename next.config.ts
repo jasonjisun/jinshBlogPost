@@ -1,13 +1,24 @@
 import type { NextConfig } from "next";
-import { hostname } from "os";
 
 const nextConfig: NextConfig = {
-  images:{
-    remotePatterns:[{
-      hostname:"fastly.picsum.photos",
-      protocol: 'https',
-      port:"",
-    },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fastly.picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com", // Google avatars
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com", // GitHub avatars
+      },
+      {
+        protocol: "https",
+        hostname: "www.gravatar.com", // Gravatar
+      },
     ],
   },
 };

@@ -7,11 +7,13 @@ interface IappProps {
     title: string
     content: string
     imageUrl: string
-    authorId: string
-    authorName: string | null
-    authorImage: string | null
     createdAt: Date
     updatedAt: Date
+    author: {
+      id: string
+      name: string | null
+      image: string | null
+    }
   }
 }
 
@@ -27,13 +29,28 @@ export function BlogPostCard({ data }: IappProps) {
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
-        <div className='p-4'>
-          <h3 className='mb-2 text-lg font-semibold text-gray-900'>
+        <div className="p-4">
+          <h3 className="mb-2 text-lg font-semibold text-gray-900">
             {data.title}
           </h3>
-          <p className='mb-4 text-sml text-gray-600 line-clamp-2'>{data.content}</p>
-          <div className='flex items-center justify-between'>
-              
+          <p className="mb-4 text-sm text-gray-600 line-clamp-2">
+            {data.content}
+          </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              {data.author.image && (
+                <Image
+                  src={data.author.image}
+                  alt={data.author.name || "Author"}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              )}
+              <span className="text-sm text-gray-700">
+                {data.author.name || "Unknown Author"}
+              </span>
+            </div>
           </div>
         </div>
       </Link>
