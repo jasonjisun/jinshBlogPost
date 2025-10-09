@@ -35,12 +35,12 @@ export default async function DashboardRoute() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {data.map((item) => (
-          <div key={item.id}>
-            <BlogPostCard data={item} />
-          </div>
-        ))}
+      <div className="flex justify-center w-full">
+        <div className="w-full max-w-xl space-y-6">
+          {data.map((item) => (
+            <BlogPostCard key={item.id} data={item} />
+          ))}
+        </div>
       </div>
     </div>
   )
